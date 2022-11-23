@@ -74,11 +74,4 @@ server.delete("/api/users/:id", (req, res) => {
     });
 });
 
-server.put("/api/users/:id", (req, res) => {
-  User.update(req.params.id, res.body).then((user) => {
-    res.status(200).json({
-      message: "good",
-    });
-  });
-});
 module.exports = server; // EXPORT YOUR SERVER instead of {}
