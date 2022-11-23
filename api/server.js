@@ -36,4 +36,23 @@ server.post("/api/users", (req, res) => {
   }
 });
 
+server.get("/api/users/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((users) => {
+      if (!users) {
+        res.status(404).json({
+          message: "does not exist",
+        });
+      } else {
+        res.status(200).json(users);
+      }
+    })
+    .catch((err) => {
+      res.status(404).json({
+        message: "does not exist",
+        err: err.message,
+      });
+    });
+});
+
 module.exports = server; // EXPORT YOUR SERVER instead of {}
